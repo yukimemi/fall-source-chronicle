@@ -47,9 +47,9 @@ export const main: Entrypoint = (
   });
 
   definePickerFromSource(
-    "chronicle:read:global",
+    "chronicle:read",
     refineSource(
-      chronicle("read"),
+      chronicle({ mode: "read" }),
       builtin.refiner.exists,
       builtin.refiner.relativePath,
     ),
@@ -75,68 +75,10 @@ export const main: Entrypoint = (
     },
   );
   definePickerFromSource(
-    "chronicle:write:global",
+    "chronicle:write",
     refineSource(
-      chronicle("write"),
+      chronicle({ mode: "write" }),
       builtin.refiner.exists,
-      builtin.refiner.relativePath,
-    ),
-    {
-      matchers: [builtin.matcher.fzf],
-      sorters: [
-        builtin.sorter.noop,
-      ],
-      renderers: [
-        composeRenderers(
-          builtin.renderer.smartPath,
-          builtin.renderer.nerdfont,
-        ),
-        builtin.renderer.nerdfont,
-        builtin.renderer.noop,
-      ],
-      previewers: [builtin.previewer.file],
-      actions: {
-        ...myPathActions,
-        ...myMiscActions,
-      },
-      defaultAction: "open",
-    },
-  );
-  definePickerFromSource(
-    "chronicle:read:local",
-    refineSource(
-      chronicle("read"),
-      builtin.refiner.exists,
-      builtin.refiner.cwd,
-      builtin.refiner.relativePath,
-    ),
-    {
-      matchers: [builtin.matcher.fzf],
-      sorters: [
-        builtin.sorter.noop,
-      ],
-      renderers: [
-        composeRenderers(
-          builtin.renderer.smartPath,
-          builtin.renderer.nerdfont,
-        ),
-        builtin.renderer.nerdfont,
-        builtin.renderer.noop,
-      ],
-      previewers: [builtin.previewer.file],
-      actions: {
-        ...myPathActions,
-        ...myMiscActions,
-      },
-      defaultAction: "open",
-    },
-  );
-  definePickerFromSource(
-    "chronicle:write:local",
-    refineSource(
-      chronicle("write"),
-      builtin.refiner.exists,
-      builtin.refiner.cwd,
       builtin.refiner.relativePath,
     ),
     {
