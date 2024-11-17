@@ -22,7 +22,7 @@ import {
 } from "jsr:@vim-fall/std";
 import * as vars from "jsr:@denops/std/variable";
 import * as builtin from "jsr:@vim-fall/std/builtin";
-import { chronicle } from "jsr:@yukimemi/chronicle";
+import { chronicle } from "jsr:@yukimemi/fall-source-chronicle";
 
 const myPathActions = {
   ...builtin.action.defaultOpenActions,
