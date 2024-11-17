@@ -46,62 +46,30 @@ export const main: Entrypoint = (
     theme: builtin.theme.MODERN_THEME,
   });
 
-  definePickerFromSource(
-    "chronicle:read",
-    refineSource(
-      chronicle({ mode: "read" }),
-      builtin.refiner.exists,
-      builtin.refiner.relativePath,
-    ),
-    {
-      matchers: [builtin.matcher.fzf],
-      sorters: [
-        builtin.sorter.noop,
-      ],
-      renderers: [
-        composeRenderers(
-          builtin.renderer.smartPath,
-          builtin.renderer.nerdfont,
-        ),
-        builtin.renderer.nerdfont,
-        builtin.renderer.noop,
-      ],
-      previewers: [builtin.previewer.file],
-      actions: {
-        ...myPathActions,
-        ...myMiscActions,
+  const defineChroniclePicker = (mode: "read" | "write") => {
+    definePickerFromSource(
+      `chronicle:${mode}`,
+      refineSource(
+        chronicle({ mode }),
+        builtin.refiner.exists,
+        builtin.refiner.relativePath,
+      ),
+      {
+        matchers: [builtin.matcher.fzf],
+        sorters: [builtin.sorter.noop],
+        renderers: [
+          composeRenderers(builtin.renderer.smartPath, builtin.renderer.nerdfont),
+          builtin.renderer.noop,
+        ],
+        previewers: [builtin.previewer.file],
+        actions: { ...myPathActions, ...myMiscActions },
+        defaultAction: "open",
       },
-      defaultAction: "open",
-    },
-  );
-  definePickerFromSource(
-    "chronicle:write",
-    refineSource(
-      chronicle({ mode: "write" }),
-      builtin.refiner.exists,
-      builtin.refiner.relativePath,
-    ),
-    {
-      matchers: [builtin.matcher.fzf],
-      sorters: [
-        builtin.sorter.noop,
-      ],
-      renderers: [
-        composeRenderers(
-          builtin.renderer.smartPath,
-          builtin.renderer.nerdfont,
-        ),
-        builtin.renderer.nerdfont,
-        builtin.renderer.noop,
-      ],
-      previewers: [builtin.previewer.file],
-      actions: {
-        ...myPathActions,
-        ...myMiscActions,
-      },
-      defaultAction: "open",
-    },
-  );
+    );
+  };
+
+  defineChroniclePicker("read");
+  defineChroniclePicker("write");
 };
 ```
 
