@@ -1,7 +1,7 @@
 // =============================================================================
 // File        : chronicle.ts
 // Author      : yukimemi
-// Last Change : 2024/11/18 00:47:47.
+// Last Change : 2024/11/18 01:45:27.
 // =============================================================================
 
 import * as fn from "jsr:@denops/std@7.3.2/function";
@@ -52,7 +52,7 @@ export function chronicle(options: Readonly<ChronicleOptions> = {}): Source<Deta
       ? await vars.g.get(denops, "chronicle_read_path")
       : args[0];
     const file = await Deno.open(
-      await fn.fnamemodify(denops, await fn.expand(denops, filepath), ":p"),
+      await fn.fnamemodify(denops, filepath, ":p"),
     );
     const lineStream = file.readable
       .pipeThrough(new TextDecoderStream())
