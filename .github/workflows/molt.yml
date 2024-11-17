@@ -1,0 +1,42 @@
+# =============================================================================
+# File        : molt.yml
+# Author      : yukimemi
+# Last Change : 2024/09/21 15:46:08.
+# =============================================================================
+
+name: molt
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 6 * * *"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    name: Update
+    permissions: write-all
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.PRIVATE_KEY }}
+
+      - uses: actions/checkout@v4
+      - uses: denoland/setup-deno@v1
+      - run: deno task ci
+      - uses: hasundue/molt-action@v1.0.2
+        with:
+          labels: automerge
+          token: ${{ steps.app-token.outputs.token }}
+          config: false
+          source: "**/*.ts"
