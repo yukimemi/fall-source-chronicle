@@ -12,17 +12,10 @@ This is the [chronicle.vim](https://github.com/yukimemi/chronicle.vim) source of
 - FallCustom
 
 ```typescript
-import type { Entrypoint } from "jsr:@vim-fall/custom";
-import {
-  composeRenderers,
-  defineSource,
-  refineCurator,
-  refineSource,
-  Source,
-} from "jsr:@vim-fall/std";
-import * as vars from "jsr:@denops/std/variable";
 import * as builtin from "jsr:@vim-fall/std/builtin";
+import type { Entrypoint } from "jsr:@vim-fall/custom";
 import { chronicle } from "jsr:@yukimemi/fall-source-chronicle";
+import { composeRenderers, refineSource } from "jsr:@vim-fall/std";
 
 const myPathActions = {
   ...builtin.action.defaultOpenActions,
