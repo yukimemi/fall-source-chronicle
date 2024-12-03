@@ -7,7 +7,7 @@
 import * as fn from "jsr:@denops/std@7.4.0/function";
 import * as vars from "jsr:@denops/std@7.4.0/variable";
 import { TextLineStream } from "jsr:@std/streams@1.0.8/text-line-stream";
-import { defineSource, type Source } from "jsr:@vim-fall/std@0.10.0";
+import { defineSource, type Source } from "jsr:@vim-fall/std@0.10.1";
 
 /**
  * Represents details about a chronicle entry.  Currently only contains the file path.
