@@ -66,9 +66,8 @@ export const main: Entrypoint = (
 };
 ```
 
-## License 
+## License
 
 Licensed under MIT License.
 
 Copyright (c) 2024 yukimemi
-

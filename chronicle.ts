@@ -1,13 +1,13 @@
 // =============================================================================
 // File        : chronicle.ts
 // Author      : yukimemi
-// Last Change : 2024/11/18 01:45:27.
+// Last Change : 2025/11/02 11:20:31.
 // =============================================================================
 
-import * as fn from "jsr:@denops/std@7.5.0/function";
-import * as vars from "jsr:@denops/std@7.5.0/variable";
-import { TextLineStream } from "jsr:@std/streams@1.0.9/text-line-stream";
-import { defineSource, type Source } from "jsr:@vim-fall/std@0.12.0";
+import * as fn from "@denops/std/function";
+import * as vars from "@denops/std/variable";
+import { TextLineStream } from "@std/streams/text-line-stream";
+import { defineSource, type Source } from "@vim-fall/std";
 
 /**
  * Represents details about a chronicle entry.  Currently only contains the file path.

@@ -19,5 +19,11 @@
     "singleQuote": false,
     "exclude": ["README.md"]
   },
-  "lock": false
+  "lock": false,
+  "imports": {
+    "@denops/std": "jsr:@denops/std@^8.1.1",
+    "@std/assert": "jsr:@std/assert@^1.0.15",
+    "@std/streams": "jsr:@std/streams@^1.0.13",
+    "@vim-fall/std": "jsr:@vim-fall/std@^0.13.0"
+  }
 }
